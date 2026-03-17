@@ -1,0 +1,16 @@
+{
+  "name": "TaskFlow Pro",
+  "short_name": "TaskFlow",
+  "description": "Smart task management with gamification and analytics",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff0f6",
+  "theme_color": "#e91e63",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -9,6 +9,19 @@ connectDB();
 
 const app = express();
 
+// Allow local dev + production frontend
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:5174',
+  process.env.FRONTEND_URL,
+].filter(Boolean);
+
+// CORS must come BEFORE rate limiter so preflight OPTIONS requests get headers
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+}));
+
 // Rate limiting — 100 requests per minute per IP
 const limiter = rateLimit({
   windowMs: 60 * 1000,
@@ -17,17 +30,6 @@ const limiter = rateLimit({
 });
 
 app.use(limiter);
-// Allow local dev + production frontend
-const allowedOrigins = [
-  'http://localhost:5173',
-  'http://localhost:5174',
-  process.env.FRONTEND_URL,
-].filter(Boolean);
-
-app.use(cors({
-  origin: allowedOrigins,
-  credentials: true,
-}));
 app.use(express.json());
 
 // Routes

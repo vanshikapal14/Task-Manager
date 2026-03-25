@@ -40,7 +40,7 @@ app.use('/api/tasks',     require('./routes/tasks'));
 app.use('/api/analytics', require('./routes/analytics'));
 app.use('/api/profile',   require('./routes/profile'));
 
-app.get('/', (req, res) => res.json({ message: 'TaskFlow Pro API Running' }));
+app.get('/', (req, res) => res.json({ message: 'TaskFlow API Running' }));
 
 // Global error handler
 app.use((err, req, res, _next) => {
